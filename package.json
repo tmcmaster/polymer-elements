@@ -1,6 +1,6 @@
 {
   "name": "polymer-elements",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Attempt to make the polymer library available with Pika registry.",
   "main": "index.js",
   "scripts": {
