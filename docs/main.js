@@ -1,6 +1,6 @@
 import {html, render} from "./web_modules/lit-html.js";
 
-
+const items = ['one','two','three']
 render(html`
     <style>
         body {
@@ -11,8 +11,25 @@ render(html`
           flex-direction: row;
           justify-content: center;
         } 
-
+        
+        div {
+            
+        }
+        
+        h3 {
+            width: 100%;
+            text-align: left;
+        }
     </style>
-    <h3>Polymer Elements</h3>
+    <div>
+        <h3>Polymer Elements</h3>
+        <iron-list .items="${items}" as="item">
+          <template>
+            <div>Testing [[item]]</div>
+          </template>
+        </iron-list>
+    </div>
+    
+    
 `, document.querySelector('body'));
 
