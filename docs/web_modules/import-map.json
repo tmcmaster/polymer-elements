@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "@polymer/polymer": "./@polymer/polymer.js",
+    "lit-element": "./lit-element.js",
+    "lit-html": "./lit-html.js"
+  }
+}
