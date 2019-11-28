@@ -23,6 +23,7 @@ render(html`
     </style>
     <div>
         <h3>Polymer Elements</h3>
+        <paper-button>Paper Button</paper-button>
         <iron-list .items="${items}" as="item">
           <template>
             <div>Testing [[item]]</div>
