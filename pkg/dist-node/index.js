@@ -17,10 +17,6 @@ var debounce_js = require('@polymer/polymer/lib/utils/debounce.js');
 var flush_js = require('@polymer/polymer/lib/utils/flush.js');
 var path_js = require('@polymer/polymer/lib/utils/path.js');
 require('@polymer/polymer/lib/utils/templatize.js');
-var ironA11yAnnouncer_js = require('@polymer/iron-a11y-announcer/iron-a11y-announcer.js');
-var ironA11yKeysBehavior_js = require('@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js');
-var ironResizableBehavior_js = require('@polymer/iron-resizable-behavior/iron-resizable-behavior.js');
-var ironScrollTargetBehavior_js = require('@polymer/iron-scroll-target-behavior/iron-scroll-target-behavior.js');
 
 /**
 @license
@@ -16565,28 +16561,8 @@ polymerFn_js.Polymer({
   }
 });
 
-Object.defineProperty(exports, 'IronA11yAnnouncer', {
-  enumerable: true,
-  get: function () {
-    return ironA11yAnnouncer_js.IronA11yAnnouncer;
-  }
-});
-Object.defineProperty(exports, 'IronA11yKeysBehavior', {
-  enumerable: true,
-  get: function () {
-    return ironA11yKeysBehavior_js.IronA11yKeysBehavior;
-  }
-});
-Object.defineProperty(exports, 'IronResizableBehavior', {
-  enumerable: true,
-  get: function () {
-    return ironResizableBehavior_js.IronResizableBehavior;
-  }
-});
-Object.defineProperty(exports, 'IronScrollTargetBehavior', {
-  enumerable: true,
-  get: function () {
-    return ironScrollTargetBehavior_js.IronScrollTargetBehavior;
-  }
-});
+exports.IronA11yAnnouncer = IronA11yAnnouncer;
+exports.IronA11yKeysBehavior = IronA11yKeysBehavior;
+exports.IronResizableBehavior = IronResizableBehavior;
+exports.IronScrollTargetBehavior = IronScrollTargetBehavior;
 //# sourceMappingURL=index.js.map

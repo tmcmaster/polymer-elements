@@ -13,10 +13,6 @@ import { Debouncer } from '@polymer/polymer/lib/utils/debounce.js';
 import { flush, enqueueDebouncer } from '@polymer/polymer/lib/utils/flush.js';
 import { matches as matches$1, translate } from '@polymer/polymer/lib/utils/path.js';
 import '@polymer/polymer/lib/utils/templatize.js';
-export { IronA11yAnnouncer } from '@polymer/iron-a11y-announcer/iron-a11y-announcer.js';
-export { IronA11yKeysBehavior } from '@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js';
-export { IronResizableBehavior } from '@polymer/iron-resizable-behavior/iron-resizable-behavior.js';
-export { IronScrollTargetBehavior } from '@polymer/iron-scroll-target-behavior/iron-scroll-target-behavior.js';
 
 /**
 @license
@@ -16560,4 +16556,6 @@ Polymer({
     };
   }
 });
+
+export { IronA11yAnnouncer, IronA11yKeysBehavior, IronResizableBehavior, IronScrollTargetBehavior };
 //# sourceMappingURL=index.js.map
