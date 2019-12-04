@@ -34,6 +34,21 @@ render(html`
             </iron-list>
         </section>
         
+        <section title="paper-card">
+            <paper-card heading="Paper Card">
+                <div class="card-content">
+                    <paper-button>Paper Button</paper-button>
+                    <paper-input always-float-label label="Floating label"></paper-input>
+                </div>
+                <div class="card-actions">
+                    <paper-button>Share</paper-button>
+                    <paper-button>Explore!</paper-button>
+                </div>
+            </paper-card>
+        </section>
+        <section title="paper-input">
+            <paper-input always-float-label label="Floating label"></paper-input>
+        </section>
     </tm-examples>    
 `, document.querySelector('body'));
 

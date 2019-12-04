@@ -13,3 +13,4 @@ import '@polymer/iron-list';
 import '@polymer/iron-media-query';
 import '@polymer/paper-toast';
 import '@polymer/app-layout';
+import '@polymer/paper-input/paper-input';

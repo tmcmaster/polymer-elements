@@ -13,6 +13,7 @@ import './iron-list/iron-list.js';
 import './iron-media-query/iron-media-query.js';
 import './paper-toast/paper-toast.js';
 import './app-layout/app-layout.js';
+import './paper-input/paper-input.js'
 
 import { IronA11yAnnouncer } from './iron-a11y-announcer/iron-a11y-announcer.js';
 import { IronA11yKeysBehavior } from './iron-a11y-keys-behavior/iron-a11y-keys-behavior.js';
