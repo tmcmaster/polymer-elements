@@ -12,3 +12,4 @@ import './iron-iconset-svg/iron-iconset-svg.js';
 import './iron-list/iron-list.js';
 import './iron-media-query/iron-media-query.js';
 import './paper-toast/paper-toast.js';
+import './app-layout/app-layout.js';

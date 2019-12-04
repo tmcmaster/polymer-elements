@@ -20,7 +20,15 @@
   "dependencies": {
     "@polymer/polymer": "^3.3.1",
     "lit-element": "^2.0.1",
-    "lit-html": "^1.0.0"
+    "lit-html": "^1.0.0",
+    "@polymer/iron-a11y-announcer": "^3.0.2",
+    "@polymer/iron-a11y-keys-behavior": "^3.0.1",
+    "@polymer/iron-icon": "^3.0.1",
+    "@polymer/iron-iconset-svg": "^3.0.1",
+    "@polymer/iron-list": "^3.1.0",
+    "@polymer/iron-media-query": "^3.0.1",
+    "@polymer/iron-resizable-behavior": "^3.0.1",
+    "@polymer/iron-scroll-target-behavior": "^3.0.1"
   },
   "devDependencies": {
     "@pika/pack": "^0.5.0",
@@ -29,6 +37,7 @@
     "@pika/plugin-build-web": "^0.6.1",
     "@pika/plugin-standard-pkg": "^0.6.1",
     "@pika/types": "^0.6.1",
+    "@polymer/app-layout": "^3.1.0",
     "@polymer/paper-toast": "^3.0.1",
     "@polymer/iron-dropdown": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
@@ -39,10 +48,6 @@
     "@polymer/paper-checkbox": "^3.1.0",
     "@polymer/paper-dialog": "^3.0.1",
     "@polymer/iron-ajax": "^3.0.1",
-    "@polymer/iron-icon": "^3.0.1",
-    "@polymer/iron-iconset-svg": "^3.0.1",
-    "@polymer/iron-list": "^3.1.0",
-    "@polymer/iron-media-query": "^3.0.1",
     "owc-dev-server": "^0.3.0"
   },
   "esnext": "dist-src/index.js",
