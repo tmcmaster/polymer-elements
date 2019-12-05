@@ -14,3 +14,4 @@ import '@polymer/iron-media-query';
 import '@polymer/paper-toast';
 import '@polymer/app-layout';
 import '@polymer/paper-input/paper-input';
+import '@polymer/iron-overlay-behavior/iron-overlay-backdrop'
