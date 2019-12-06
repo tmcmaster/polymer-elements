@@ -1,21 +1,42 @@
 import { Base, html as html$1 } from '@polymer/polymer/polymer-legacy.js';
+export { Base } from '@polymer/polymer/polymer-legacy.js';
 import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
+export { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
 import { useShadow } from '@polymer/polymer/lib/utils/settings.js';
+export { useShadow } from '@polymer/polymer/lib/utils/settings.js';
 import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
+export { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+export { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import { add } from '@polymer/polymer/lib/utils/gestures.js';
+export { addListener, gestures, prevent, register, removeListener, resetMouseCanceller, setTouchAction } from '@polymer/polymer/lib/utils/gestures.js';
 import { resolveUrl } from '@polymer/polymer/lib/utils/resolve-url.js';
+export { resolveUrl } from '@polymer/polymer/lib/utils/resolve-url.js';
 import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
+export { afterNextRender, beforeNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 import { OptionalMutableDataBehavior } from '@polymer/polymer/lib/legacy/mutable-data-behavior.js';
+export { OptionalMutableDataBehavior } from '@polymer/polymer/lib/legacy/mutable-data-behavior.js';
 import { Templatizer } from '@polymer/polymer/lib/legacy/templatizer-behavior.js';
+export { Templatizer } from '@polymer/polymer/lib/legacy/templatizer-behavior.js';
 import { animationFrame, microTask, idlePeriod } from '@polymer/polymer/lib/utils/async.js';
+export { animationFrame, idlePeriod, microTask } from '@polymer/polymer/lib/utils/async.js';
 import { Debouncer } from '@polymer/polymer/lib/utils/debounce.js';
+export { Debouncer } from '@polymer/polymer/lib/utils/debounce.js';
 import { flush, enqueueDebouncer } from '@polymer/polymer/lib/utils/flush.js';
+export { enqueueDebouncer, flush } from '@polymer/polymer/lib/utils/flush.js';
 import { matches as matches$1, translate } from '@polymer/polymer/lib/utils/path.js';
-import '@polymer/polymer/lib/utils/templatize.js';
+export { matches, translate } from '@polymer/polymer/lib/utils/path.js';
+export { TemplateInstanceBase, templatize } from '@polymer/polymer/lib/utils/templatize.js';
 import { dashToCamelCase } from '@polymer/polymer/lib/utils/case-map.js';
-import '@polymer/polymer/lib/elements/dom-module.js';
+export { dashToCamelCase } from '@polymer/polymer/lib/utils/case-map.js';
+export { DomModule } from '@polymer/polymer/lib/elements/dom-module.js';
 import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+export { PolymerElement } from '@polymer/polymer/polymer-element.js';
+export { DisableUpgradeMixin } from '@polymer/polymer/lib/mixins/disable-upgrade-mixin.js';
+export { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
+export { GestureEventListeners } from '@polymer/polymer/lib/mixins/gesture-event-listeners.js';
+export { IronResizableBehavior } from '@polymer/iron-resizable-behavior/iron-resizable-behavior.js';
+export { Class, mixinBehaviors } from '@polymer/polymer/lib/legacy/class.js';
 
 /**
 @license
@@ -18319,5 +18340,5 @@ Polymer({
   }
 });
 
-export { IronA11yAnnouncer, IronA11yKeysBehavior, IronResizableBehavior, IronScrollTargetBehavior };
+export { AppLayoutBehavior, AppScrollEffectsBehavior, IronA11yAnnouncer, IronA11yKeysBehavior, IronButtonState, IronButtonStateImpl, IronCheckedElementBehavior, IronCheckedElementBehaviorImpl, IronControlState, IronFitBehavior, IronFocusablesHelper, IronFormElementBehavior, IronMeta, IronOverlayBehavior, IronOverlayBehaviorImpl, IronOverlayManager, IronScrollTargetBehavior, IronValidatableBehavior, NeonAnimatableBehavior, NeonAnimationRunnerBehavior, PaperButtonBehavior, PaperCheckedElementBehavior, PaperDialogBehavior, PaperInkyFocusBehavior, PaperInkyFocusBehaviorImpl, PaperInputAddonBehavior, PaperInputBehavior, PaperRippleBehavior, _scrollEffects, pushScrollLock, removeScrollLock };
 //# sourceMappingURL=index.js.map

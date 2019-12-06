@@ -16,10 +16,15 @@ var async_js = require('@polymer/polymer/lib/utils/async.js');
 var debounce_js = require('@polymer/polymer/lib/utils/debounce.js');
 var flush_js = require('@polymer/polymer/lib/utils/flush.js');
 var path_js = require('@polymer/polymer/lib/utils/path.js');
-require('@polymer/polymer/lib/utils/templatize.js');
+var templatize_js = require('@polymer/polymer/lib/utils/templatize.js');
 var caseMap_js = require('@polymer/polymer/lib/utils/case-map.js');
-require('@polymer/polymer/lib/elements/dom-module.js');
+var domModule_js = require('@polymer/polymer/lib/elements/dom-module.js');
 var polymerElement_js = require('@polymer/polymer/polymer-element.js');
+var disableUpgradeMixin_js = require('@polymer/polymer/lib/mixins/disable-upgrade-mixin.js');
+var flattenedNodesObserver_js = require('@polymer/polymer/lib/utils/flattened-nodes-observer.js');
+var gestureEventListeners_js = require('@polymer/polymer/lib/mixins/gesture-event-listeners.js');
+var ironResizableBehavior_js = require('@polymer/iron-resizable-behavior/iron-resizable-behavior.js');
+var class_js = require('@polymer/polymer/lib/legacy/class.js');
 
 /**
 @license
@@ -18323,8 +18328,251 @@ polymerFn_js.Polymer({
   }
 });
 
+Object.defineProperty(exports, 'Base', {
+  enumerable: true,
+  get: function () {
+    return polymerLegacy_js.Base;
+  }
+});
+Object.defineProperty(exports, 'dom', {
+  enumerable: true,
+  get: function () {
+    return polymer_dom_js.dom;
+  }
+});
+Object.defineProperty(exports, 'useShadow', {
+  enumerable: true,
+  get: function () {
+    return settings_js.useShadow;
+  }
+});
+Object.defineProperty(exports, 'Polymer', {
+  enumerable: true,
+  get: function () {
+    return polymerFn_js.Polymer;
+  }
+});
+Object.defineProperty(exports, 'html', {
+  enumerable: true,
+  get: function () {
+    return htmlTag_js.html;
+  }
+});
+Object.defineProperty(exports, 'addListener', {
+  enumerable: true,
+  get: function () {
+    return gestures.addListener;
+  }
+});
+Object.defineProperty(exports, 'gestures', {
+  enumerable: true,
+  get: function () {
+    return gestures.gestures;
+  }
+});
+Object.defineProperty(exports, 'prevent', {
+  enumerable: true,
+  get: function () {
+    return gestures.prevent;
+  }
+});
+Object.defineProperty(exports, 'register', {
+  enumerable: true,
+  get: function () {
+    return gestures.register;
+  }
+});
+Object.defineProperty(exports, 'removeListener', {
+  enumerable: true,
+  get: function () {
+    return gestures.removeListener;
+  }
+});
+Object.defineProperty(exports, 'resetMouseCanceller', {
+  enumerable: true,
+  get: function () {
+    return gestures.resetMouseCanceller;
+  }
+});
+Object.defineProperty(exports, 'setTouchAction', {
+  enumerable: true,
+  get: function () {
+    return gestures.setTouchAction;
+  }
+});
+Object.defineProperty(exports, 'resolveUrl', {
+  enumerable: true,
+  get: function () {
+    return resolveUrl_js.resolveUrl;
+  }
+});
+Object.defineProperty(exports, 'afterNextRender', {
+  enumerable: true,
+  get: function () {
+    return renderStatus_js.afterNextRender;
+  }
+});
+Object.defineProperty(exports, 'beforeNextRender', {
+  enumerable: true,
+  get: function () {
+    return renderStatus_js.beforeNextRender;
+  }
+});
+Object.defineProperty(exports, 'OptionalMutableDataBehavior', {
+  enumerable: true,
+  get: function () {
+    return mutableDataBehavior_js.OptionalMutableDataBehavior;
+  }
+});
+Object.defineProperty(exports, 'Templatizer', {
+  enumerable: true,
+  get: function () {
+    return templatizerBehavior_js.Templatizer;
+  }
+});
+Object.defineProperty(exports, 'animationFrame', {
+  enumerable: true,
+  get: function () {
+    return async_js.animationFrame;
+  }
+});
+Object.defineProperty(exports, 'idlePeriod', {
+  enumerable: true,
+  get: function () {
+    return async_js.idlePeriod;
+  }
+});
+Object.defineProperty(exports, 'microTask', {
+  enumerable: true,
+  get: function () {
+    return async_js.microTask;
+  }
+});
+Object.defineProperty(exports, 'Debouncer', {
+  enumerable: true,
+  get: function () {
+    return debounce_js.Debouncer;
+  }
+});
+Object.defineProperty(exports, 'enqueueDebouncer', {
+  enumerable: true,
+  get: function () {
+    return flush_js.enqueueDebouncer;
+  }
+});
+Object.defineProperty(exports, 'flush', {
+  enumerable: true,
+  get: function () {
+    return flush_js.flush;
+  }
+});
+Object.defineProperty(exports, 'matches', {
+  enumerable: true,
+  get: function () {
+    return path_js.matches;
+  }
+});
+Object.defineProperty(exports, 'translate', {
+  enumerable: true,
+  get: function () {
+    return path_js.translate;
+  }
+});
+Object.defineProperty(exports, 'TemplateInstanceBase', {
+  enumerable: true,
+  get: function () {
+    return templatize_js.TemplateInstanceBase;
+  }
+});
+Object.defineProperty(exports, 'templatize', {
+  enumerable: true,
+  get: function () {
+    return templatize_js.templatize;
+  }
+});
+Object.defineProperty(exports, 'dashToCamelCase', {
+  enumerable: true,
+  get: function () {
+    return caseMap_js.dashToCamelCase;
+  }
+});
+Object.defineProperty(exports, 'DomModule', {
+  enumerable: true,
+  get: function () {
+    return domModule_js.DomModule;
+  }
+});
+Object.defineProperty(exports, 'PolymerElement', {
+  enumerable: true,
+  get: function () {
+    return polymerElement_js.PolymerElement;
+  }
+});
+Object.defineProperty(exports, 'DisableUpgradeMixin', {
+  enumerable: true,
+  get: function () {
+    return disableUpgradeMixin_js.DisableUpgradeMixin;
+  }
+});
+Object.defineProperty(exports, 'FlattenedNodesObserver', {
+  enumerable: true,
+  get: function () {
+    return flattenedNodesObserver_js.FlattenedNodesObserver;
+  }
+});
+Object.defineProperty(exports, 'GestureEventListeners', {
+  enumerable: true,
+  get: function () {
+    return gestureEventListeners_js.GestureEventListeners;
+  }
+});
+Object.defineProperty(exports, 'IronResizableBehavior', {
+  enumerable: true,
+  get: function () {
+    return ironResizableBehavior_js.IronResizableBehavior;
+  }
+});
+Object.defineProperty(exports, 'Class', {
+  enumerable: true,
+  get: function () {
+    return class_js.Class;
+  }
+});
+Object.defineProperty(exports, 'mixinBehaviors', {
+  enumerable: true,
+  get: function () {
+    return class_js.mixinBehaviors;
+  }
+});
+exports.AppLayoutBehavior = AppLayoutBehavior;
+exports.AppScrollEffectsBehavior = AppScrollEffectsBehavior;
 exports.IronA11yAnnouncer = IronA11yAnnouncer;
 exports.IronA11yKeysBehavior = IronA11yKeysBehavior;
-exports.IronResizableBehavior = IronResizableBehavior;
+exports.IronButtonState = IronButtonState;
+exports.IronButtonStateImpl = IronButtonStateImpl;
+exports.IronCheckedElementBehavior = IronCheckedElementBehavior;
+exports.IronCheckedElementBehaviorImpl = IronCheckedElementBehaviorImpl;
+exports.IronControlState = IronControlState;
+exports.IronFitBehavior = IronFitBehavior;
+exports.IronFocusablesHelper = IronFocusablesHelper;
+exports.IronFormElementBehavior = IronFormElementBehavior;
+exports.IronMeta = IronMeta;
+exports.IronOverlayBehavior = IronOverlayBehavior;
+exports.IronOverlayBehaviorImpl = IronOverlayBehaviorImpl;
+exports.IronOverlayManager = IronOverlayManager;
 exports.IronScrollTargetBehavior = IronScrollTargetBehavior;
+exports.IronValidatableBehavior = IronValidatableBehavior;
+exports.NeonAnimatableBehavior = NeonAnimatableBehavior;
+exports.NeonAnimationRunnerBehavior = NeonAnimationRunnerBehavior;
+exports.PaperButtonBehavior = PaperButtonBehavior;
+exports.PaperCheckedElementBehavior = PaperCheckedElementBehavior;
+exports.PaperDialogBehavior = PaperDialogBehavior;
+exports.PaperInkyFocusBehavior = PaperInkyFocusBehavior;
+exports.PaperInkyFocusBehaviorImpl = PaperInkyFocusBehaviorImpl;
+exports.PaperInputAddonBehavior = PaperInputAddonBehavior;
+exports.PaperInputBehavior = PaperInputBehavior;
+exports.PaperRippleBehavior = PaperRippleBehavior;
+exports._scrollEffects = _scrollEffects;
+exports.pushScrollLock = pushScrollLock;
+exports.removeScrollLock = removeScrollLock;
 //# sourceMappingURL=index.js.map
