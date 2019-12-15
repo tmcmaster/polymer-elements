@@ -15,6 +15,7 @@ import './paper-toast/paper-toast.js';
 import './app-layout/app-layout.js';
 import './paper-input/paper-input.js';
 import './iron-overlay-behavior/iron-overlay-backdrop.js';
+import './iron-resizable-behavior/iron-resizable-behavior.js'
 
 // import { IronA11yAnnouncer } from './iron-a11y-announcer/iron-a11y-announcer.js';
 // import { IronA11yKeysBehavior } from './iron-a11y-keys-behavior/iron-a11y-keys-behavior.js';
