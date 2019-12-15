@@ -17,14 +17,6 @@ import './paper-input/paper-input.js';
 import './iron-overlay-behavior/iron-overlay-backdrop.js';
 import './iron-resizable-behavior/iron-resizable-behavior.js'
 
-// import { IronA11yAnnouncer } from './iron-a11y-announcer/iron-a11y-announcer.js';
-// import { IronA11yKeysBehavior } from './iron-a11y-keys-behavior/iron-a11y-keys-behavior.js';
-// import { IronResizableBehavior } from './iron-resizable-behavior/iron-resizable-behavior.js';
-// import { IronScrollTargetBehavior } from './iron-scroll-target-behavior/iron-scroll-target-behavior.js';
-
-//export {IronA11yAnnouncer, IronA11yKeysBehavior, IronResizableBehavior,IronScrollTargetBehavior};
-
-
 import { AppLayoutBehavior } from './app-layout/app-layout-behavior/app-layout-behavior.js';
 import { AppScrollEffectsBehavior } from './app-layout/app-scroll-effects/app-scroll-effects-behavior.js';
 import { Base } from "@polymer/polymer/polymer-legacy.js";
@@ -44,7 +36,7 @@ import { IronFormElementBehavior } from "./iron-form-element-behavior/iron-form-
 import { IronMeta } from "./iron-meta/iron-meta.js";
 import { IronOverlayBehavior, IronOverlayBehaviorImpl } from "./iron-overlay-behavior/iron-overlay-behavior.js";
 import { IronOverlayManager } from './iron-overlay-behavior/iron-overlay-manager.js';
-import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
+import { IronResizableBehavior } from "./iron-resizable-behavior/iron-resizable-behavior.js";
 import { IronScrollTargetBehavior } from './iron-scroll-target-behavior/iron-scroll-target-behavior.js';
 import { IronValidatableBehavior } from "./iron-validatable-behavior/iron-validatable-behavior.js";
 import { NeonAnimatableBehavior } from './neon-animation/neon-animatable-behavior.js';
@@ -65,11 +57,9 @@ import { Templatizer } from "@polymer/polymer/lib/legacy/templatizer-behavior.js
 import { _scrollEffects } from './app-layout/helpers/helpers.js';
 import { addListener, register, prevent, gestures, removeListener, setTouchAction, resetMouseCanceller } from '@polymer/polymer/lib/utils/gestures.js';
 import { afterNextRender, beforeNextRender } from '@polymer/polymer/lib/utils/render-status.js';
-// import { animationFrame, idlePeriod, microTask } from "@polymer/polymer/lib/utils/async.js";
 import { dashToCamelCase } from '@polymer/polymer/lib/utils/case-map.js';
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { enqueueDebouncer, flush } from '@polymer/polymer/lib/utils/flush.js';
-//import { flush as flush$1, dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import { idlePeriod, timeOut, animationFrame, microTask } from '@polymer/polymer/lib/utils/async.js';
 import { matches, translate } from "@polymer/polymer/lib/utils/path.js";

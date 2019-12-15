@@ -1,5 +1,5 @@
-import { E as ElementMixin } from '../common/html-tag-2efc7eb2.js';
-export { h as html, v as version } from '../common/html-tag-2efc7eb2.js';
+import { E as ElementMixin } from '../common/html-tag-c5ee4c99.js';
+export { h as html, v as version } from '../common/html-tag-c5ee4c99.js';
 
 /**
 @license

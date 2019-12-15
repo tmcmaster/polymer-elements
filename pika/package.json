@@ -1,12 +1,14 @@
 {
     "scripts": {
-        "pika:build": "npm update && npx @pika/web --dest ../docs/web_modules"
+        "pika:clean": "rm -rf node_modules/@wonkytech/*/node_modules",
+        "pika:build": "npx @pika/web --dest ../docs/web_modules",
+        "build": "npm update && npm run pika:clean && npm run pika:build"
     },
     "dependencies": {
         "@polymer/polymer": "^3.3.1",
         "lit-element": "^2.0.1",
         "lit-html": "^1.0.0",
-        "@wonkytech/polymer-elements": "latest",
-        "@wonkytech/tm-examples": "latest"
+        "@wonkytech/polymer-elements": "~0.0.16",
+        "@wonkytech/tm-examples": "~0.0.29"
     }
 }

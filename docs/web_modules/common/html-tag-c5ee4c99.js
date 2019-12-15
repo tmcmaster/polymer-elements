@@ -6633,4 +6633,4 @@ const html = function html(strings, ...values) {
   return template;
 };
 
-export { ElementMixin as E, PropertyAccessors as P, PropertyEffects as a, matches as b, cancelSyntheticClickEvents as c, dedupingMixin as d, translate as e, cssFromModules as f, get as g, html as h, resolveUrl as i, animationFrame as j, idlePeriod as k, legacyOptimizations as l, microTask as m, dashToCamelCase as n, passiveTouchGestures as p, root as r, strictTemplatePolicy as s, timeOut as t, useShadow as u, version as v, wrap as w };
+export { DomModule as D, ElementMixin as E, PropertyAccessors as P, PropertyEffects as a, matches as b, cancelSyntheticClickEvents as c, dedupingMixin as d, translate as e, cssFromModules as f, get as g, html as h, resolveUrl as i, animationFrame as j, idlePeriod as k, legacyOptimizations as l, microTask as m, dashToCamelCase as n, passiveTouchGestures as p, root as r, strictTemplatePolicy as s, timeOut as t, useShadow as u, version as v, wrap as w };

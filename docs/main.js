@@ -1,5 +1,7 @@
 import {html, render} from "./web_modules/lit-html.js";
 
+//import './web_modules/@wonkytech/tm-examples.js';
+
 let sites = {
     'src': 'https://github.com/tmcmaster/polymer-elements',
     'pika': 'https://www.pika.dev/npm/@wonkytech/polymer-elements',
