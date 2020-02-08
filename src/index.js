@@ -4,6 +4,7 @@ import './iron-input/iron-input.js';
 import './iron-label/iron-label.js';
 import './paper-button/paper-button.js';
 import './paper-card/paper-card.js';
+import './paper-slider/paper-slider.js';
 import './paper-checkbox/paper-checkbox.js';
 import './paper-dialog/paper-dialog.js';
 import './iron-ajax/iron-ajax.js';

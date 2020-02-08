@@ -1,7 +1,5 @@
 import {html, render} from "./web_modules/lit-html.js";
 
-//import './web_modules/@wonkytech/tm-examples.js';
-
 let sites = {
     'src': 'https://github.com/tmcmaster/polymer-elements',
     'pika': 'https://www.pika.dev/npm/@wonkytech/polymer-elements',
@@ -50,6 +48,9 @@ render(html`
         </section>
         <section title="paper-input">
             <paper-input always-float-label label="Floating label"></paper-input>
+        </section>
+        <section title="paper-slider">
+            <paper-slider min="0" max="5" step="1"></paper-slider>
         </section>
     </tm-examples>    
 `, document.querySelector('body'));

@@ -1,9 +1,23 @@
-import { h as html$1, k as idlePeriod, t as timeOut, u as useShadow, m as microTask, j as animationFrame, D as DomModule, n as dashToCamelCase } from '../common/html-tag-c5ee4c99.js';
-import { PolymerElement } from '../@polymer/polymer.js';
+import { h as html$1, P as PolymerElement, k as idlePeriod, t as timeOut, u as useShadow, m as microTask, j as animationFrame, D as DomModule, l as dashToCamelCase } from '../common/polymer-element-8ea1d988.js';
+import { GestureEventListeners, Debouncer, enqueueDebouncer, addListener, DisableUpgradeMixin, mixinBehaviors, IronResizableBehavior, register, prevent, flush, FlattenedNodesObserver, gestures, removeListener, setTouchAction, IronA11yAnnouncer, IronA11yKeysBehavior, afterNextRender, beforeNextRender, Class, IronScrollTargetBehavior, dom, Base, templatize, resetMouseCanceller } from './polymer-elements.js';
 import { a as directive, e as AttributePart, j as PropertyPart, h as html, n as noChange, N as NodePart, l as templateFactory } from '../common/lit-html-9957b87e.js';
 import { query, property, css, customElement, eventOptions, LitElement } from '../lit-element.js';
-import { G as GestureEventListeners, D as Debouncer, e as enqueueDebouncer, c as addListener, l as DisableUpgradeMixin, m as mixinBehaviors, r as register, p as prevent, f as flush, F as FlattenedNodesObserver, g as gestures, h as removeListener, s as setTouchAction, a as afterNextRender, j as beforeNextRender, C as Class, d as dom, B as Base, t as templatize, i as resetMouseCanceller } from '../common/disable-upgrade-mixin-7a0afe03.js';
-import { IronResizableBehavior, IronA11yAnnouncer, IronA11yKeysBehavior, IronScrollTargetBehavior } from './polymer-elements.js';
+
+function loadLink(link) {
+  const newLink = document.createElement("link");
+  newLink.setAttribute("rel", "stylesheet");
+  newLink.setAttribute("href", link);
+
+  newLink.onload = event => {
+    console.log('Script has been loaded successfully: ' + link);
+  };
+
+  newLink.onerror = error => {
+    console.error(`There was an issue loading link(${link}):`, error);
+  };
+
+  document.getElementsByTagName('head')[0].append(newLink);
+}
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -439,6 +453,8 @@ const _focusableElementsString = ['a[href]',
                                   'select:not([disabled])',
                                   'textarea:not([disabled])',
                                   'button:not([disabled])',
+                                  'details',
+                                  'summary',
                                   'iframe',
                                   'object',
                                   'embed',
@@ -1004,7 +1020,7 @@ class InertManager {
     }, this);
 
     // Comment this out to use programmatic API only.
-    this._observer.observe(this._document.body, {attributes: true, subtree: true, childList: true});
+    this._observer.observe(this._document.body || this._document.documentElement, {attributes: true, subtree: true, childList: true});
   }
 
   /**
@@ -12933,6 +12949,8 @@ TextField = __decorate([customElement('mwc-textfield')], TextField);
 let TopAppBar = class TopAppBar extends TopAppBarBase {};
 TopAppBar.styles = style$k;
 TopAppBar = __decorate([customElement('mwc-top-app-bar')], TopAppBar);
+
+loadLink("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 class Lumo extends HTMLElement {
   static get version() {
@@ -34806,6 +34824,266 @@ class GridSortColumnElement extends GridColumnElement {
 
 customElements.define(GridSortColumnElement.is, GridSortColumnElement);
 
+/**
+@license
+Copyright (c) 2017 Vaadin Ltd.
+This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+*/
+/**
+ * `<vaadin-grid-selection-column>` is a helper element for the `<vaadin-grid>`
+ * that provides default templates and functionality for item selection.
+ *
+ * #### Example:
+ * ```html
+ * <vaadin-grid items="[[items]]">
+ *  <vaadin-grid-selection-column frozen auto-select></vaadin-grid-selection-column>
+ *
+ *  <vaadin-grid-column>
+ *    ...
+ * ```
+ *
+ * By default the selection column displays `<vaadin-checkbox>` elements in the
+ * column cells. The checkboxes in the body rows toggle selection of the corresponding row items.
+ *
+ * When the grid data is provided as an array of [`items`](#/elements/vaadin-grid#property-items),
+ * the column header gets an additional checkbox that can be used for toggling
+ * selection for all the items at once.
+ *
+ * __The default content can also be overridden__
+ *
+ * @memberof Vaadin
+ */
+
+class GridSelectionColumnElement extends GridColumnElement {
+  static get template() {
+    return html$1`
+    <template class="header" id="defaultHeaderTemplate">
+      <vaadin-checkbox class="vaadin-grid-select-all-checkbox" aria-label="Select All" hidden\$="[[_selectAllHidden]]" on-checked-changed="_onSelectAllCheckedChanged" checked="[[_isChecked(selectAll, _indeterminate)]]" indeterminate="[[_indeterminate]]"></vaadin-checkbox>
+    </template>
+    <template id="defaultBodyTemplate">
+      <vaadin-checkbox aria-label="Select Row" checked="{{selected}}"></vaadin-checkbox>
+    </template>
+`;
+  }
+
+  static get is() {
+    return 'vaadin-grid-selection-column';
+  }
+
+  static get properties() {
+    return {
+      /**
+       * Width of the cells for this column.
+       */
+      width: {
+        type: String,
+        value: '58px'
+      },
+
+      /**
+       * Flex grow ratio for the cell widths. When set to 0, cell width is fixed.
+       */
+      flexGrow: {
+        type: Number,
+        value: 0
+      },
+
+      /**
+       * When true, all the items are selected.
+       */
+      selectAll: {
+        type: Boolean,
+        value: false,
+        notify: true
+      },
+
+      /**
+       * When true, the active gets automatically selected.
+       */
+      autoSelect: {
+        type: Boolean,
+        value: false
+      },
+      _indeterminate: Boolean,
+
+      /**
+       * The previous state of activeItem. When activeItem turns to `null`,
+       * previousActiveItem will have an Object with just unselected activeItem
+       */
+      _previousActiveItem: Object,
+      _selectAllHidden: Boolean
+    };
+  }
+
+  static get observers() {
+    return ['_onSelectAllChanged(selectAll)'];
+  }
+
+  _pathOrHeaderChanged(path, header, headerCell, footerCell, cells, renderer, headerRenderer, bodyTemplate, headerTemplate) {
+    // As a special case, allow overriding the default header / body templates
+    if (cells.value && (path !== undefined || renderer !== undefined)) {
+      this._bodyTemplate = bodyTemplate = undefined;
+
+      this.__cleanCellsOfTemplateProperties(cells.value);
+    }
+
+    if (headerCell && (header !== undefined || headerRenderer !== undefined)) {
+      this._headerTemplate = headerTemplate = undefined;
+
+      this.__cleanCellsOfTemplateProperties([headerCell]);
+    }
+
+    super._pathOrHeaderChanged(path, header, headerCell, footerCell, cells, renderer, headerRenderer, bodyTemplate, headerTemplate);
+  }
+
+  __cleanCellsOfTemplateProperties(cells) {
+    cells.forEach(cell => {
+      cell._content.innerHTML = '';
+      delete cell._instance;
+      delete cell._template;
+    });
+  }
+
+  _prepareHeaderTemplate() {
+    const headerTemplate = this._prepareTemplatizer(this._findTemplate(true) || this.$.defaultHeaderTemplate); // needed to override the dataHost correctly in case internal template is used.
+
+
+    headerTemplate.templatizer.dataHost = headerTemplate === this.$.defaultHeaderTemplate ? this : this.dataHost;
+    return headerTemplate;
+  }
+
+  _prepareBodyTemplate() {
+    const template = this._prepareTemplatizer(this._findTemplate() || this.$.defaultBodyTemplate); // needed to override the dataHost correctly in case internal template is used.
+
+
+    template.templatizer.dataHost = template === this.$.defaultBodyTemplate ? this : this.dataHost;
+    return template;
+  }
+
+  constructor() {
+    super();
+    this._boundOnActiveItemChanged = this._onActiveItemChanged.bind(this);
+    this._boundOnDataProviderChanged = this._onDataProviderChanged.bind(this);
+    this._boundOnSelectedItemsChanged = this._onSelectedItemsChanged.bind(this);
+  }
+  /** @protected */
+
+
+  disconnectedCallback() {
+    this._grid.removeEventListener('active-item-changed', this._boundOnActiveItemChanged);
+
+    this._grid.removeEventListener('data-provider-changed', this._boundOnDataProviderChanged);
+
+    this._grid.removeEventListener('filter-changed', this._boundOnSelectedItemsChanged);
+
+    this._grid.removeEventListener('selected-items-changed', this._boundOnSelectedItemsChanged);
+
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    if (isSafari && window.ShadyDOM && this.parentElement) {
+      // Detach might have beem caused by order change.
+      // Shady on safari doesn't restore isAttached so we'll need to do it manually.
+      const parent = this.parentElement;
+      const nextSibling = this.nextElementSibling;
+      parent.removeChild(this);
+
+      if (nextSibling) {
+        parent.insertBefore(this, nextSibling);
+      } else {
+        parent.appendChild(this);
+      }
+    }
+
+    super.disconnectedCallback();
+  }
+  /** @protected */
+
+
+  connectedCallback() {
+    super.connectedCallback();
+
+    if (this._grid) {
+      this._grid.addEventListener('active-item-changed', this._boundOnActiveItemChanged);
+
+      this._grid.addEventListener('data-provider-changed', this._boundOnDataProviderChanged);
+
+      this._grid.addEventListener('filter-changed', this._boundOnSelectedItemsChanged);
+
+      this._grid.addEventListener('selected-items-changed', this._boundOnSelectedItemsChanged);
+    }
+  }
+
+  _onSelectAllChanged(selectAll) {
+    if (selectAll === undefined || !this._grid) {
+      return;
+    }
+
+    if (this._selectAllChangeLock) {
+      return;
+    }
+
+    this._grid.selectedItems = selectAll && Array.isArray(this._grid.items) ? this._grid._filter(this._grid.items) : [];
+  } // Return true if array `a` contains all the items in `b`
+  // We need this when sorting or to preserve selection after filtering.
+
+
+  _arrayContains(a, b) {
+    for (var i = 0; a && b && b[i] && a.indexOf(b[i]) >= 0; i++); // eslint-disable-line
+
+
+    return i == b.length;
+  }
+
+  _onSelectAllCheckedChanged(e) {
+    this.selectAll = this._indeterminate || e.target.checked;
+  } // iOS needs indeterminated + checked at the same time
+
+
+  _isChecked(selectAll, indeterminate) {
+    return indeterminate || selectAll;
+  }
+
+  _onActiveItemChanged(e) {
+    const activeItem = e.detail.value;
+
+    if (this.autoSelect) {
+      const item = activeItem || this._previousActiveItem;
+
+      if (item) {
+        this._grid._toggleItem(item);
+      }
+    }
+
+    this._previousActiveItem = activeItem;
+  }
+
+  _onSelectedItemsChanged(e) {
+    this._selectAllChangeLock = true;
+
+    if (Array.isArray(this._grid.items)) {
+      if (!this._grid.selectedItems.length) {
+        this.selectAll = false;
+        this._indeterminate = false;
+      } else if (this._arrayContains(this._grid.selectedItems, this._grid._filter(this._grid.items))) {
+        this.selectAll = true;
+        this._indeterminate = false;
+      } else {
+        this.selectAll = false;
+        this._indeterminate = true;
+      }
+    }
+
+    this._selectAllChangeLock = false;
+  }
+
+  _onDataProviderChanged(e) {
+    this._selectAllHidden = !Array.isArray(this._grid.items);
+  }
+
+}
+
+customElements.define(GridSelectionColumnElement.is, GridSelectionColumnElement);
+
 const $_documentContainer$x = document.createElement('template');
 $_documentContainer$x.innerHTML = `<iron-iconset-svg name="vaadin" size="16">
 <svg><defs>
@@ -41498,6 +41776,9 @@ window.customElements.define('tm-examples', class extends LitElement {
       button.appendChild(document.createTextNode('Source'));
       section.insertBefore(button, section.firstChild);
       const main = document.createElement('main');
+      main.style.display = "flex";
+      main.style.flexDirection = "row";
+      main.style.justifyContent = "center";
       Array.from(section.childNodes).filter(child => child.name !== 'source').forEach(child => {
         main.appendChild(section.removeChild(child));
       });
@@ -41543,8 +41824,8 @@ window.customElements.define('tm-examples', class extends LitElement {
                 background: var(--tm-demo-background, inherit);
                 //border: solid gray 2px;
                 box-sizing: border-box;
-                width: 100%;
-                height: 100%;
+                width: 100vw;
+                height: 100vh;
                 --tm-example-icon-size: 32px;
                 padding: 3vmin;
             }
@@ -41616,6 +41897,12 @@ window.customElements.define('tm-examples', class extends LitElement {
                 justify-content: center;
                 padding-top: 20px;
                 //border: solid lightgray 1px;
+            }
+            
+            nav {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
             }
         `;
   } // noinspection JSUnusedGlobalSymbols

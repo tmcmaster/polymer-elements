@@ -6,6 +6,7 @@ import '@polymer/paper-button';
 import '@polymer/paper-card';
 import '@polymer/paper-checkbox';
 import '@polymer/paper-dialog';
+import '@polymer/paper-slider';
 import '@polymer/iron-ajax';
 import '@polymer/iron-icon';
 import '@polymer/iron-iconset-svg';
