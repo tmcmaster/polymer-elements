@@ -19,6 +19,15 @@ render(html`
             width: 100vw;
             height: 100vh;  
         }
+        paper-slider {
+            height: 25px;
+            width: 350px;
+        }
+        div.sliders {
+            margin-top: 50px;   
+            display: flex;
+            flex-direction: column;     
+        }
     </style>
     <tm-examples heading="Polymer Elements" .sites="${sites}">
     
@@ -50,7 +59,11 @@ render(html`
             <paper-input always-float-label label="Floating label"></paper-input>
         </section>
         <section title="paper-slider">
-            <paper-slider min="0" max="5" step="1"></paper-slider>
+            <div class="sliders">
+                <paper-slider value="1" min="0" max="5" step="1" pin snaps editable></paper-slider>
+                <paper-slider value="3" min="0" max="5" step="1" pin snaps disabled></paper-slider>
+                <paper-slider value="5" min="0" max="5" step="1" pin snaps></paper-slider>            
+            </div>
         </section>
     </tm-examples>    
 `, document.querySelector('body'));

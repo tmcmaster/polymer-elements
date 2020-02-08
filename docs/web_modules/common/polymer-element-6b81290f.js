@@ -6604,4 +6604,4 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
  */
 const PolymerElement = ElementMixin(HTMLElement);
 
-export { DomModule as D, ElementMixin as E, PolymerElement as P, PropertyAccessors as a, PropertyEffects as b, matches as c, dedupingMixin as d, translate as e, cssFromModules as f, get as g, html as h, resolveUrl as i, animationFrame as j, idlePeriod as k, dashToCamelCase as l, microTask as m, passiveTouchGestures as p, root as r, timeOut as t, useShadow as u, version as v, wrap as w };
+export { DomModule as D, ElementMixin as E, PolymerElement as P, PropertyAccessors as a, PropertyEffects as b, matches as c, dedupingMixin as d, translate as e, cssFromModules as f, get as g, html as h, resolveUrl as i, dashToCamelCase as j, animationFrame as k, idlePeriod as l, microTask as m, passiveTouchGestures as p, root as r, timeOut as t, useShadow as u, version as v, wrap as w };
